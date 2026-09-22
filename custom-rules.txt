@@ -1,1 +1,7 @@
 
+! Title: Custom Rules
+! Expires: 14 days
+! Description: Custom Adblock rules list
+
+! Block redgifs.com and all of its subdomains
+||redgifs.com^
