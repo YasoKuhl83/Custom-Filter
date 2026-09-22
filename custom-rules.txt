@@ -1,9 +1,16 @@
-! Title: Custom Rules
+! Title: Block RedGifs on Reddit
 ! Expires: 14 days
 
-! Network level domain blocking
-||redgifs.com^$doc,popup,subdocument,script,image
+! 1. Block embedded iframe frames loading RedGifs on Reddit
+reddit.com##iframe[src*="redgifs.com"]
+reddit.com##iframe[data-src*="redgifs.com"]
 
-! Hide page elements/iframes on host sites
-##iframe[src*="redgifs.com"]
-##a[href*="redgifs.com"]
+! 2. Hide entire post containers on Reddit that link to RedGifs
+reddit.com##shreddit-post[content-href*="redgifs.com"]
+reddit.com##shreddit-post[domain*="redgifs.com"]
+reddit.com##div[data-domain="redgifs.com"]
+
+! 3. Block underlying video streams & media server requests
+||redgifs.com^$domain=reddit.com
+||v3.redgifs.com^$domain=reddit.com
+||i.redgifs.com^$domain=reddit.com
